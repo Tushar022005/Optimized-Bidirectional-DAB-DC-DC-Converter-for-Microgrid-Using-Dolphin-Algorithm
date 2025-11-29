@@ -7,13 +7,17 @@ ________________________________________
 📁 Repository Contents
 
 This repo contains only the essential working files:
+
 dab.slx        → MATLAB Simulink model of the bidirectional DAB converter  
 dolphin2.m    → MATLAB script implementing the Dolphin Echolocation Algorithm (DEA)  
 ResearchPaper.pdf → Complete research paper documenting theory & results
 ________________________________________
 🎯 Project Objective
+
 •	Develop a state-space mathematical model of a bidirectional DAB converter suitable for microgrid energy storage interfaces.
+
 •	Implement Phase-Shift Modulation (PSM) based current control.
+
 •	Optimize PI controller gains (Kp, Ki) using DEA to minimize the Integral Absolute Error (IAE).
 •	Validate controller performance using MATLAB Simulink simulations for voltage regulation, power flow, and transient response.
 ________________________________________
