@@ -1,8 +1,11 @@
 This repository contains the MATLAB/Simulink implementation for the research work:
+
 Design and Optimization of a Bidirectional Dual Active Bridge (DAB) DC-DC Converter using Dolphin Echolocation Algorithm for Microgrid Applications
+
 The project demonstrates how a bio-inspired Dolphin Echolocation Algorithm (DEA) is used to automatically tune the PI controller gains of a phase-shift modulated DAB converter, resulting in superior transient performance compared to conventional manual tuning techniques.
 ________________________________________
 📁 Repository Contents
+
 This repo contains only the essential working files:
 dab.slx        → MATLAB Simulink model of the bidirectional DAB converter  
 dolphin2.m    → MATLAB script implementing the Dolphin Echolocation Algorithm (DEA)  
