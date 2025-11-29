@@ -28,11 +28,7 @@ Converter
 
 •	Topology: Dual Active Bridge (DAB) bidirectional isolated DC-DC converter
 
-•	Ports:
-
-  o	High-Voltage side: 1000 V DC link (PV / grid interface)
-  
-  o	Low-Voltage side: 500 V storage bus (battery or ultracapacitor)
+•	Ports:o	High-Voltage side: 1000 V DC link (PV / grid interface)o	Low-Voltage side: 500 V storage bus (battery or ultracapacitor)
   
 •	Transformer turns ratio: 1:2
 
@@ -66,11 +62,7 @@ DEA Parameters
 
 •	Maximum iterations = 20
 
-•	Search ranges:
-
-  o	Kp ∈ [0, 10]
-  
-  o	Ki ∈ [0, 5]
+•	Search ranges:o	Kp ∈ [0, 10] o	Ki ∈ [0, 5]
 
 •	Fitness function = Integral of Absolute Error (IAE)
 
@@ -78,10 +70,7 @@ Each dolphin represents a candidate PI gain pair. Simulations run inside the opt
 ________________________________________
 ✅ Optimized Controller Gains
 
-After 20 DEA iterations, the optimal gains obtained were:
-
-Kp = 5.3558
-Ki = 2.8991
+After 20 DEA iterations, the optimal gains obtained were:Kp = 5.3558 Ki = 2.8991
 
 These gains achieved:
 
@@ -126,10 +115,7 @@ Step-3: What Happens
 
 •	IAE is calculated and fed back into DEA.
 
-•	DEA converges to optimal PI gains and prints:
-
-  Optimal Kp = 5.3558
-  Optimal Ki = 2.8991
+•	DEA converges to optimal PI gains and prints:Optimal Kp = 5.3558 Optimal Ki = 2.8991
   
 •	Final waveforms and responses appear directly in Simulink scopes.
 ________________________________________
@@ -156,11 +142,7 @@ ________________________________________
 
 •	Experimental hardware validation using a scaled DAB prototype.
 
-•	Advanced control techniques:
-
-  o	Model Predictive Control (MPC)
-  
-  o	Sliding Mode Control
+•	Advanced control techniques:o	Model Predictive Control (MPC) o	Sliding Mode Control
   
 •	Multi-port microgrid converter extension.
 
