@@ -1,0 +1,68 @@
+clc; clear; close all;
+
+% --- Step 1: define parameter limits ---
+Kp_min = 0;  Kp_max = 10;
+Ki_min = 0;  Ki_max = 5;
+num_dolphins = 10;   % population
+max_iter = 20;
+
+% --- Step 2: initialize dolphins ---
+Kp = Kp_min + rand(1,num_dolphins)*(Kp_max-Kp_min);
+Ki = Ki_min + rand(1,num_dolphins)*(Ki_max-Ki_min);
+
+best_fitness = inf;
+best_Kp = 0; best_Ki = 0;
+
+% --- make sure FastRestart is off ---
+set_param('dab','FastRestart','off');
+
+fprintf('\nIter    Best fitness\n');
+fprintf('-------------------------\n');
+
+for iter = 1:max_iter
+    for i = 1:num_dolphins
+        % --- assign controller gains to workspace ---
+        assignin('base','Kp_var',Kp(i));  % IMPORTANT: Simulink PI block uses Kp_var
+        assignin('base','Ki_var',Ki(i));  % IMPORTANT: Simulink PI block uses Ki_var
+
+        % --- run simulation ---
+        simOut = sim('dab', ...
+            'ReturnWorkspaceOutputs','on', ...
+            'SaveOutput','on', ...
+            'SaveFormat','StructureWithTime', ...
+            'StopTime','0.02');
+
+        % Try to get error_signal from simOut
+        try
+            error_signal = simOut.get('error_signal');
+            error_values = error_signal.signals.values;
+        catch
+            warning('error_signal not found in simulation output. Please check that your "To Workspace" block is named "error_signal" and uses structure format.');
+            continue;
+        end
+
+        % --- fitness: integral of absolute error ---
+        fitness = sum(abs(error_values));
+
+        % --- update best dolphin ---
+        if fitness < best_fitness
+            best_fitness = fitness;
+            best_Kp = Kp(i);
+            best_Ki = Ki(i);
+        end
+    end
+
+    % --- print progress after each iteration ---
+    fprintf('  %2d       %.4f\n', iter, best_fitness);
+
+    % --- dolphin echolocation update step ---
+    for i = 1:num_dolphins
+        echo = rand;
+        Kp(i) = best_Kp + echo*(rand-0.5)*(Kp_max-Kp_min);
+        Ki(i) = best_Ki + echo*(rand-0.5)*(Ki_max-Ki_min);
+        Kp(i) = min(max(Kp(i),Kp_min),Kp_max);
+        Ki(i) = min(max(Ki(i),Ki_min),Ki_max);
+    end
+end
+
+fprintf('\nOptimal Kp = %.4f, Ki = %.4f\n',best_Kp,best_Ki);
