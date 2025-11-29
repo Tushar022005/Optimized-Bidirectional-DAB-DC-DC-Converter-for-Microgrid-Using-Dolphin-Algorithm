@@ -28,7 +28,11 @@ Converter
 
 •	Topology: Dual Active Bridge (DAB) bidirectional isolated DC-DC converter
 
-•	Ports:o	High-Voltage side: 1000 V DC link (PV / grid interface)o	Low-Voltage side: 500 V storage bus (battery or ultracapacitor)
+•	Ports:
+
+o	High-Voltage side: 1000 V DC link (PV / grid interface)
+
+o	Low-Voltage side: 500 V storage bus (battery or ultracapacitor)
   
 •	Transformer turns ratio: 1:2
 
@@ -142,7 +146,11 @@ ________________________________________
 
 •	Experimental hardware validation using a scaled DAB prototype.
 
-•	Advanced control techniques:o	Model Predictive Control (MPC) o	Sliding Mode Control
+•	Advanced control techniques:
+
+  o	Model Predictive Control (MPC)
+  
+  o	Sliding Mode Control
   
 •	Multi-port microgrid converter extension.
 
